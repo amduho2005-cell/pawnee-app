@@ -6,6 +6,9 @@
 :root {
   color-scheme: dark;
 
+  /* Cursor de linterna (pixel art 32x32; el punto activo es la lente) */
+  --cursor-linterna: url("/cursor-linterna.png") 4 27, pointer;
+
   /* Paleta: bosque a medianoche + haz de linterna */
   --noche: #0e1a17;
   --superficie: #15241e;
@@ -347,7 +350,7 @@ a { text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
   color: var(--hueso);
   background: transparent;
   border: var(--borde);
-  cursor: pointer;
+  cursor: var(--cursor-linterna);
 }
 
 .chip:hover { background: var(--superficie-alta); }
@@ -689,7 +692,7 @@ a { text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
   box-shadow: 5px 5px 0 var(--alarma);
 }
 
-.form-control[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+.form-control[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: var(--cursor-linterna); }
 
 .form-text { color: var(--niebla); margin-top: 0.4rem; }
 
@@ -706,7 +709,7 @@ a { text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
   position: absolute;
   opacity: 0;
   inset: 0;
-  cursor: pointer;
+  cursor: var(--cursor-linterna);
 }
 
 .opcion span {
@@ -855,4 +858,21 @@ a { text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
   .btn:hover, .btn:active, .tarjeta-criatura:hover, .tarjeta-criatura:focus-within {
     transform: none;
   }
+}
+
+/* ---------- Cursor de linterna sobre elementos interactivos ---------- */
+
+a[href],
+button:not(:disabled),
+.btn:not(:disabled),
+[role="button"],
+label[for],
+select,
+summary,
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="button"],
+.tarjeta-criatura:has(.stretched-link) {
+  cursor: var(--cursor-linterna);
 }
